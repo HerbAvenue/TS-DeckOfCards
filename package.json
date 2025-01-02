@@ -7,13 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "serve -s dist"
   },
   "devDependencies": {
     "typescript": "~5.6.2",
     "vite": "^6.0.5"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "serve": "^14.2.4"
   }
 }
