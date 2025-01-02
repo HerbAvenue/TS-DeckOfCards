@@ -2,7 +2,7 @@ import { Deck } from "./Deck";
 
 const deckContainer = document.getElementById("deck")!; //Why ! at end?
 const shuffleButton = document.getElementById("shuffle")!;
-const drawButton = document.getElementById("draw")!;
+// const drawButton = document.getElementById("draw")!;
 
 //Init Deck
 const deck = new Deck();
@@ -23,5 +23,14 @@ function renderDeck() {
         deckContainer.appendChild(cardElement);
     });
 }
+
+shuffleButton.addEventListener("click", () => {
+    deck.shuffle();
+    renderDeck();
+});
+
+// drawButton.addEventListener("click", () => {
+//     deck.draw();
+// })
 
 renderDeck();
