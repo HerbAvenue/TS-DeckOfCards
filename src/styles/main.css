@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: darkolivegreen;
+  }
+.deck {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.card {
+    width: 80px;
+    height: 120px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 7px;
+}
+.card img {
+    width: 100px;      /* Set the card image width */
+    height: auto;      /* Maintain aspect ratio */
+    border: 1px solid black; /* Optional: Add a border to each card */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add shadow */
+}
+.card span {
+    text-align: center;
+}
+#deckContainer {
+    display: flex;            /* Align cards in a row */
+    flex-wrap: wrap;          /* Allow wrapping to prevent overflow */
+    gap: 10px;                /* Add spacing between cards */
+    justify-content: center;  /* Center align the cards */
+    padding: 20px;
+}

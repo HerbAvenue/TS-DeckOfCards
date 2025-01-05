@@ -1,4 +1,5 @@
 import { Deck } from "./Deck";
+import './styles/main.css';
 
 const deckContainer = document.getElementById("deck")!; //Why ! at end?
 const shuffleButton = document.getElementById("shuffle")!;
