@@ -1,4 +1,10 @@
-export function initializeDrag(cardElement: HTMLElement, deck: any) {
+import { Card } from "./Card";
+
+interface Deck {
+    cards: Card[];
+}
+
+export function initializeDrag(cardElement: HTMLElement, deck: Deck) {
     let newX = 0, newY = 0, startX = 0, startY = 0;
     
     let draggedCard: HTMLElement | null = null;
@@ -8,6 +14,8 @@ export function initializeDrag(cardElement: HTMLElement, deck: any) {
         draggedCard = cardElement;
         startX = e.clientX;
         startY = e.clientY;
+
+        document.body.style.cursor = 'grabbing';
 
         // Add event listeners for mousemove and mouseup
         document.addEventListener('mousemove', mouseMove);
@@ -32,6 +40,14 @@ export function initializeDrag(cardElement: HTMLElement, deck: any) {
                 
                 //Update Z-index to always be ontop
                 draggedCard.style.zIndex = `${deck.cards.length + 1}`;
+
+                //Update Z-Index of all cards in the deck
+                deck.cards.forEach((card: Card, index: number) => {
+                    const cardElement = document.getElementById(`${card.value}_${card.suit}`);
+                    if (cardElement) {
+                        cardElement.style.zIndex = `${index + 1}`;
+                    }
+                });
             }
         }
 
@@ -56,6 +72,8 @@ export function initializeDrag(cardElement: HTMLElement, deck: any) {
     function mouseUp() {
         document.removeEventListener('mousemove', mouseMove);
         document.removeEventListener('mouseup', mouseUp);
+
+        document.body.style.cursor = 'default';
     }
 
     // Bind the mousedown event to start the drag

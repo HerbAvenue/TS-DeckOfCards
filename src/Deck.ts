@@ -7,6 +7,9 @@ export class Deck {
         "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"
     ];
 
+    //Seperate stack tracker
+    public stacks: Map<number, Card[]> = new Map();
+
     constructor() {
         this.initializeDeck();
     }
@@ -26,6 +29,9 @@ export class Deck {
            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]
         }
     }
+
+
+    //STACK FUNCTIONS BELOW
 
     draw(): Card | undefined {
         return this.cards.pop();
