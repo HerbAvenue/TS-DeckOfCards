@@ -1,14 +1,42 @@
-export function initializeDrag(cardElement: HTMLElement) {
+export function initializeDrag(cardElement: HTMLElement, deck: any) {
     let newX = 0, newY = 0, startX = 0, startY = 0;
+    
+    let draggedCard: HTMLElement | null = null;
 
     // Mouse down event to initialize the drag
     function mouseDown(e: MouseEvent) {
+        draggedCard = cardElement;
         startX = e.clientX;
         startY = e.clientY;
 
         // Add event listeners for mousemove and mouseup
         document.addEventListener('mousemove', mouseMove);
         document.addEventListener('mouseup', mouseUp);
+
+        //Update Deck to bring dragged card to top (End of array)
+        const cardId = draggedCard.getAttribute('id');
+        const card = deck.cards.find((card: any) => `${card.value}_${card.suit}` === cardId);
+
+        if (card) {
+            // Remove card from current position in deck
+            deck.cards = deck.cards.filter((c: any) => c !== card);
+
+            //Push to end of deck
+            deck.cards.push(card);
+
+            const deckContainer = document.getElementById("sandbox");
+            if (deckContainer) {
+                
+                // Move it to the end of the deck container
+                deckContainer.appendChild(draggedCard);  
+                
+                //Update Z-index to always be ontop
+                draggedCard.style.zIndex = `${deck.cards.length + 1}`;
+            }
+        }
+
+        //Log deck array for debugging
+        //console.log(deck.cards);
     }
 
     // Mouse move event for dragging

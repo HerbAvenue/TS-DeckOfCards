@@ -1,7 +1,7 @@
 import { Card } from "./Card"
 
 export class Deck {
-    private cards: Card[] = [];
+    public cards: Card[] = [];
     private suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
     private values = [
         "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"
