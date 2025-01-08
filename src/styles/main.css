@@ -16,3 +16,15 @@ body {
     .card {
       position: absolute;
     }
+
+    .card-count {
+      position: absolute;
+      top: -25px;  /* Adjust the vertical position to fit the stack */
+      left: 0;
+      font-size: 14px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2px 5px;
+      border-radius: 5px;
+      z-index: 1000; /* Ensure it appears on top of cards if necessary */
+  }
